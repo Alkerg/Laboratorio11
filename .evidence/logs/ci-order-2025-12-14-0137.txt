@@ -1,0 +1,77 @@
+SERVICE=order-service
+IMAGE=ghcr.io/alkerg/order-service:20251214001852
+K8S_IMAGE=ghcr.io/alkerg/order-service:20251214001852
+TAG=20251214001852
+K8S_VERSION=v1.34.0
+[i] build normal (con registry=ghcr.io/alkerg)
+[OK] build -> ghcr.io/alkerg/order-service:20251214001852
+The push refers to repository [ghcr.io/alkerg/order-service]
+b6d1681626f2: Preparing
+7ec911d64c8a: Preparing
+113459801637: Preparing
+be7fb88f8691: Preparing
+66da4de703bc: Preparing
+c97e87cbd7b8: Preparing
+602c1c97924f: Preparing
+644f9c869502: Preparing
+d3ed01caa084: Preparing
+77a2b55fbe8b: Preparing
+c97e87cbd7b8: Waiting
+602c1c97924f: Waiting
+644f9c869502: Waiting
+d3ed01caa084: Waiting
+77a2b55fbe8b: Waiting
+66da4de703bc: Layer already exists
+be7fb88f8691: Layer already exists
+113459801637: Layer already exists
+644f9c869502: Layer already exists
+c97e87cbd7b8: Layer already exists
+602c1c97924f: Layer already exists
+d3ed01caa084: Layer already exists
+77a2b55fbe8b: Layer already exists
+7ec911d64c8a: Pushed
+b6d1681626f2: Pushed
+20251214001852: digest: sha256:4bd661a6028b5a9edb42c3f6651778538da20f60da73ce292af5da7e66471c7a size: 2419
+SBOM -> artifacts/order-service-sbom.json
+GRYPE -> artifacts/order-service-grype.sarif (gate: fail-on high)
+Manifest -> artifacts/order-service.yaml
+[i] Asegurando minikube (k8s=v1.34.0)
+minikube status >/dev/null 2>&1 || \
+minikube start --driver=docker --kubernetes-version=v1.34.0 --cpus=4 --memory=2024
+deployment.apps/order-service configured
+service/order-service unchanged
+kubectl rollout status deploy/order-service -n default --timeout=180s
+Waiting for deployment "order-service" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "order-service" rollout to finish: 1 old replicas are pending termination...
+deployment "order-service" successfully rolled out
+[i] smoke: order-service/default -> http://127.0.0.1:8001
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Directory listing for /</title>
+</head>
+<body>
+<h1>Directory listing for /</h1>
+<hr>
+<ul>
+<li><a href=".evidence/">.evidence/</a></li>
+<li><a href=".venv/">.venv/</a></li>
+<li><a href="artifacts/">artifacts/</a></li>
+<li><a href="docker/">docker/</a></li>
+<li><a href="docker-compose.order.test.yml">docker-compose.order.test.yml</a></li>
+<li><a href="docker-compose.user.test.yml">docker-compose.user.test.yml</a></li>
+<li><a href="healthcheck.py">healthcheck.py</a></li>
+<li><a href="Instrucciones.md">Instrucciones.md</a></li>
+<li><a href="k8s/">k8s/</a></li>
+<li><a href="Makefile">Makefile</a></li>
+<li><a href="requirements.txt">requirements.txt</a></li>
+<li><a href="scripts/">scripts/</a></li>
+<li><a href="server.py">server.py</a></li>
+<li><a href="supply-chain/">supply-chain/</a></li>
+</ul>
+<hr>
+</body>
+</html>
+[OK] SMOKE order-service -> 200
+[CI] OK -> order-service @ ghcr.io/alkerg/order-service:20251214001852 (via registry)

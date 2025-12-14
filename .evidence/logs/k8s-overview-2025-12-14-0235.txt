@@ -1,0 +1,12 @@
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS      IMAGES                                        SELECTOR
+deployment.apps/order-service   1/1     1            1           15m   order-service   ghcr.io/alkerg/order-service:20251214020959   app=order-service
+deployment.apps/user-service    1/1     1            1           15m   user-service    ghcr.io/alkerg/order-service:20251214020959   app=user-service
+
+NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE    SELECTOR
+service/kubernetes      ClusterIP   10.96.0.1        <none>        443/TCP    132m   <none>
+service/order-service   ClusterIP   10.98.179.104    <none>        8001/TCP   15m    app=order-service
+service/user-service    ClusterIP   10.101.246.118   <none>        8000/TCP   15m    app=user-service
+
+NAME                                 READY   STATUS    RESTARTS   AGE   IP            NODE       NOMINATED NODE   READINESS GATES
+pod/order-service-7cd6c8c655-tv64z   1/1     Running   0          15m   10.244.0.53   minikube   <none>           <none>
+pod/user-service-777c587557-6dzgt    1/1     Running   0          15m   10.244.0.52   minikube   <none>           <none>

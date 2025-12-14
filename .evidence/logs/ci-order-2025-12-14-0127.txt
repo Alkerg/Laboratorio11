@@ -1,0 +1,36 @@
+SERVICE=order-service
+IMAGE=ghcr.io/alkerg/order-service:20251214001852
+K8S_IMAGE=ghcr.io/alkerg/order-service:20251214001852
+TAG=20251214001852
+K8S_VERSION=v1.34.0
+[i] build normal (con registry=ghcr.io/alkerg)
+[OK] build -> ghcr.io/alkerg/order-service:20251214001852
+The push refers to repository [ghcr.io/alkerg/order-service]
+24d2a56a86db: Preparing
+c6ac3e919e13: Preparing
+113459801637: Preparing
+be7fb88f8691: Preparing
+66da4de703bc: Preparing
+c97e87cbd7b8: Preparing
+602c1c97924f: Preparing
+644f9c869502: Preparing
+d3ed01caa084: Preparing
+77a2b55fbe8b: Preparing
+c97e87cbd7b8: Waiting
+602c1c97924f: Waiting
+644f9c869502: Waiting
+d3ed01caa084: Waiting
+77a2b55fbe8b: Waiting
+be7fb88f8691: Layer already exists
+113459801637: Layer already exists
+66da4de703bc: Layer already exists
+c97e87cbd7b8: Layer already exists
+602c1c97924f: Layer already exists
+644f9c869502: Layer already exists
+d3ed01caa084: Layer already exists
+77a2b55fbe8b: Layer already exists
+c6ac3e919e13: Pushed
+24d2a56a86db: Pushed
+20251214001852: digest: sha256:b28606e4fa7cf2a60456192816ea914916118d50b8f1883bbc80823253f58489 size: 2417
+SBOM -> artifacts/order-service-sbom.json
+[i] grype no encontrado; usando contenedor (docker-archive)
